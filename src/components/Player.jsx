@@ -1,20 +1,17 @@
 import { useState, useRef } from "react";
 
 export default function Player() {
-  const playerName = useRef();
+  const playerName = useRef(null);
   const [name, setName] = useState("");
   function handleClick() {
-    setName(playerName.current.value)
+    setName(playerName.current.value);
+    playerName.current.value = "";
   }
   return (
     <section id="player">
       <h2>Welcome {name}</h2>
       <p>
-        <input
-          ref={playerName}
-          type="text"
-          
-        />
+        <input ref={playerName} type="text" />
         <button onClick={handleClick}>Set Name</button>
       </p>
     </section>
