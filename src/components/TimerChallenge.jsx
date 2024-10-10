@@ -16,6 +16,7 @@ const TimerChallenge = ({ title, targetTime }) => {
        } else {
          console.error("dialog.current is undefined");
        }
+       console.log(dialog.current)
     }, targetTime * 1000);
 
     setTimerStarted(true);
@@ -28,9 +29,10 @@ const TimerChallenge = ({ title, targetTime }) => {
 
   return (
     <>
-      {timerExpired && (
-        <ResultModal ref={dialog}  result="lost" targetTime={targetTime} />
-      )}
+      
+        <ResultModal ref={dialog}  result={timerExpired ? "lost" : "won"}
+ targetTime={targetTime} />
+      
       <section className="challenge">
         <h2>{title}</h2>
         {timerExpired && <p>You lost!!</p>}
